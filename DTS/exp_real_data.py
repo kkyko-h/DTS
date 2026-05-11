@@ -87,12 +87,17 @@ def run_real_mse_comparison_parallel(current_data, target_eps, opt_eps0, opt_k, 
     }
 
 def main_experiment_real():
-    # FILE_PATH = r"D:\project\finale\texi\green_tripdata_2018-01.parquet"
-    # TARGET_COL = 'trip_distance'
-    # FILE_PATH = r"D:\project\finale\data\Employee\Employee_Compensation_20260126.csv"
-    # TARGET_COL = "Total Compensation"
-    FILE_PATH = r"D:\project\finale\data\income\psam_p06.csv"
-    TARGET_COL = "PINCP"
+    # 1. ACS Income
+    # FILE_PATH = "./data/psam_p06.csv"
+    # TARGET_COL = "PINCP"
+
+    # 2. NYC Green Taxi
+    # FILE_PATH = "./data/green_tripdata_2018-01.parquet"
+    # TARGET_COL = "trip_distance"
+
+    # 3. SF Employee Compensation
+    FILE_PATH = "./data/Employee_Compensation.csv"
+    TARGET_COL = "Total Compensation"
 
 
     target_eps_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2,2.5,3,3.5,4]
@@ -160,9 +165,9 @@ def main_experiment_real():
 
     print(df_results[['Target_Eps', 'Dataset', 'Opt_Eps0', 'Opt_K', 'DTS', 'Duchi']].head())
 
-    save_path = "dp_real_world_results_income_psam_p06.csv"
+    save_path = "dp_real_world_results_Employee_Compensation.csv"
     df_results.to_csv(save_path, index=False, encoding='utf-8-sig')
-    print(f"\n💾 FINISH: {os.path.abspath(save_path)}")
+    print(f"\n FINISH: {os.path.abspath(save_path)}")
 
     return df_results
 

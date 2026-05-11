@@ -12,7 +12,6 @@ class DPDataGenerator:
 
         d_min = np.min(data)
         d_max = np.max(data)
-        # 线性变换公式
         norm_data = 2 * (data - d_min) / (d_max - d_min) - 1
         return norm_data
 
@@ -265,7 +264,7 @@ def hybrid_algo(data, epsilon):
     epsilon_star = get_epsilon_star()
     alpha = 0
 
-    # 如果跨过阈值，计算混合比例 alpha
+
     if epsilon > epsilon_star:
         alpha = 1 - np.exp(-epsilon / 2)
 
@@ -294,7 +293,7 @@ def analytic_gaussian_sigma(epsilon, delta, sensitivity):
     try:
         sigma = brentq(lambda s: _delta(s) - delta, 1e-5, 100.0)
     except ValueError:
-        sigma = 2.0 / epsilon  # 极端情况下的后备估算
+        sigma = 2.0 / epsilon
     return sigma
 
 

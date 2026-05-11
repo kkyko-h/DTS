@@ -50,15 +50,19 @@ def run_DTS_only_parallel(current_data, opt_eps0, opt_k, repeats):
 
 
 def main_experiment_delta_impact():
-    # FILE_PATH = r"D:\project\finale\data\income\psam_p06.csv"
+    # 1. ACS Income
+    # FILE_PATH = "./data/psam_p06.csv"
     # TARGET_COL = "PINCP"
-    # FILE_PATH = r"D:\project\finale\texi\green_tripdata_2018-01.parquet"
-    # TARGET_COL = 'trip_distance'
-    FILE_PATH = r"D:\project\finale\data\Employee\Employee_Compensation_20260126.csv"
+
+    # 2. NYC Green Taxi
+    # FILE_PATH = "./data/green_tripdata_2018-01.parquet"
+    # TARGET_COL = "trip_distance"
+
+    # 3. SF Employee Compensation
+    FILE_PATH = "./data/Employee_Compensation.csv"
     TARGET_COL = "Total Compensation"
 
-
-    target_eps_list = [0.1,0.5,1,1.5,2,2.5,3,3.5,4]  # 你可以自己增减
+    target_eps_list = [0.1,0.5,1,1.5,2,2.5,3,3.5,4]
 
     delta_list = [1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 1e-10]
 
@@ -129,12 +133,12 @@ def main_experiment_delta_impact():
 
     df_results = pd.DataFrame(all_results)
 
-    print("\n✅ FINISH：")
+    print("\n FINISH：")
     print(df_results[['Target_Eps', 'Target_Delta', 'Opt_Eps0', 'Opt_K', 'MSE_DTS']].head(10))
 
     save_path = "dp_DTS_delta_impact_Employee_Compensation.csv"
     df_results.to_csv(save_path, index=False, encoding='utf-8-sig')
-    print(f"\n💾 FINISH: {os.path.abspath(save_path)}")
+    print(f"\n FINISH: {os.path.abspath(save_path)}")
 
     return df_results
 

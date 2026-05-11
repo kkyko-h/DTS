@@ -97,11 +97,9 @@ def run_dynamic_mse_comparison_parallel(dist_name, params_dict, n_users, target_
         'Gaussian': avg_mses[5]
     }
 def main_experiment():
-    # n_users = 1000000
-    n_users = 10000
-    # target_eps_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.5, 3, 3.5, 4]
-    target_eps_list = [0.1, 0.2, 0.3 ]
-    repeats = 10
+    n_users = 1000000
+    target_eps_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.5, 3, 3.5, 4]
+    repeats = 10000
 
 
     generator = DPDataGenerator(n_samples=n_users)
